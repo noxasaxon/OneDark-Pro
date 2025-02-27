@@ -128,6 +128,11 @@
         "label": "One Dark Pro Night Flat",
         "uiTheme": "vs-dark",
         "path": "./themes/OneDark-Pro-night-flat.json"
+      },
+      {
+        "label": "One Light Pro",
+        "uiTheme": "vs",
+        "path": "./themes/OneLight-Pro.json"
       }
     ],
     "configuration": {
@@ -155,7 +160,8 @@
             "Retro",
             "Gnome",
             "Dark Modern",
-            "One Dark Pro Night Flat"
+            "One Dark Pro Night Flat",
+            "One Light Pro"
           ]
         },
         "oneDarkPro.italic": {

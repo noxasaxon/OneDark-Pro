@@ -1,8 +1,15 @@
 import { Colors, ThemeConfiguration, TokenColor } from '../interface'
 import data from './themeData'
 async function createEditorTokens(config: ThemeConfiguration) {
-  return config.editorTheme in data.editorThemes
-    ? (await data.editorThemes[config.editorTheme]()).default
+  // Map editorTheme from config to capitalized version used in data.editorThemes
+  let themeName = config.editorTheme;
+
+  if (config.editorTheme === 'oneLightPro') {
+    themeName = 'One Light Pro';
+  }
+
+  return themeName in data.editorThemes
+    ? (await data.editorThemes[themeName]()).default
     : (await data.editorThemes['One Dark Pro']()).default
 }
 const uniqBy = (arr, fn, set = new Set()) =>
@@ -100,6 +107,12 @@ export class Theme {
   colors
 
   constructor(configuration: ThemeConfiguration) {
+    // Set theme type based on config
+    if (configuration.editorTheme === 'oneLightPro') {
+      this.name = 'One Light Pro'
+      this.type = 'light'
+    }
+
     const themeTokens = configFactory(configuration)
     this.semanticTokenColors = themeTokens.semanticTokenColors
     this.tokenColors = themeTokens.tokenColors

@@ -46,6 +46,10 @@ MySQL Proxy
 
 ![ScreenShot](./screenshots/editornightflat.png)
 
+### One Light Pro theme
+
+One Light Pro is a light theme variant of One Dark Pro. It preserves the same syntax highlighting colors but with a light background, perfect for those who prefer a light theme while keeping the iconic One Dark Pro syntax highlighting.
+
 ### Retro theme
 
 ![ScreenShot](./screenshots/retro.png)
