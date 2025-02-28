@@ -21,3 +21,4 @@ flag.txt
 .fleet
 .idea
 *.iml
+.DS_Store

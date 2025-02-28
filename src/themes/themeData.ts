@@ -12,6 +12,7 @@ enum colorType {
   purple = 'purple',
   whiskey = 'whiskey',
   deepRed = 'deepRed',
+  string = 'string',
 }
 
 export default {
@@ -66,6 +67,22 @@ export default {
       malibu: '#61afef',
       purple: '#d55fde',
       whiskey: '#d19a66',
+    },
+    lightVibrant: {
+      chalky: '#e2b93d',
+      coral: '#e05252',
+      dark: '#8a8a8a',
+      deepRed: '#cf222e',
+      error: '#ff0000',
+      fountainBlue: '#0184bc',
+      green: '#23974a',
+      invalid: '#ffffff',
+      lightDark: '#8a8a8a',
+      lightWhite: '#383a42',
+      malibu: '#2374e9',
+      purple: '#a237c1',
+      whiskey: '#c5653b',
+      string: '#23974a',
     },
   },
   tokenColors: {
@@ -1348,7 +1365,7 @@ export default {
       {
         name: 'php function-resets',
         scope:
-          'punctuation.definition.parameters.begin.bracket.round.php,punctuation.definition.parameters.end.bracket.round.php,punctuation.separator.delimiter.php,punctuation.section.scope.begin.php,punctuation.section.scope.end.php,punctuation.terminator.expression.php,punctuation.definition.arguments.begin.bracket.round.php,punctuation.definition.arguments.end.bracket.round.php,punctuation.definition.storage-type.begin.bracket.round.php,punctuation.definition.storage-type.end.bracket.round.php,punctuation.definition.array.begin.bracket.round.php,punctuation.definition.array.end.bracket.round.php,punctuation.definition.begin.bracket.round.php,punctuation.definition.end.bracket.round.php,punctuation.definition.begin.bracket.curly.php,punctuation.definition.end.bracket.curly.php,punctuation.definition.section.switch-block.end.bracket.curly.php,punctuation.definition.section.switch-block.start.bracket.curly.php,punctuation.definition.section.switch-block.begin.bracket.curly.php,punctuation.definition.section.switch-block.end.bracket.curly.php',
+          'punctuation.definition.parameters.begin.bracket.round.php,punctuation.definition.parameters.end.bracket.round.php,punctuation.separator.delimiter.php,punctuation.section.scope.begin.php,punctuation.section.scope.end.php,punctuation.terminator.expression.php,punctuation.definition.arguments.begin.bracket.round.php,punctuation.definition.arguments.end.bracket.round.php,punctuation.definition.storage-type.begin.bracket.round.php,punctuation.definition.storage-type.end.bracket.round.php,punctuation.definition.array.begin.bracket.round.php,punctuation.definition.array.end.bracket.round.php,punctuation.definition.begin.bracket.round.php,punctuation.definition.end.bracket.round.php,punctuation.definition.section.switch-block.end.bracket.curly.php,punctuation.definition.section.switch-block.start.bracket.curly.php,punctuation.definition.section.switch-block.begin.bracket.curly.php,punctuation.definition.section.switch-block.end.bracket.curly.php',
         settings: {
           foreground: colorType.lightWhite,
         },

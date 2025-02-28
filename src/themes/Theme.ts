@@ -46,9 +46,78 @@ function configFactory(configuration) {
   }
 
   // Fill in color placeholders with concrete color values
-  const colorObj: Colors = configuration.vivid
-    ? data.textColors.vivid
-    : data.textColors.classic
+  let colorObj: Colors;
+
+  if (configuration.editorTheme === 'oneLightPro') {
+    // Use the light vibrant colors for One Light Pro
+    colorObj = data.textColors.lightVibrant;
+
+    // Special case for light theme - enhance comments visibility
+    result.forEach(token => {
+      // Make comments more visible in light theme
+      if (token.scope &&
+        (token.scope.includes('comment') ||
+          (Array.isArray(token.scope) && token.scope.some(s => s.includes('comment'))))) {
+        token.settings.foreground = '#6d6d6d'; // More visible comment color for light theme
+      }
+
+      // Make docstrings more visible in light theme
+      if (token.scope &&
+        (token.scope.includes('string.quoted.docstring') ||
+          (Array.isArray(token.scope) && token.scope.some(s => s.includes('string.quoted.docstring'))))) {
+        token.settings.foreground = '#23974a'; // Vibrant green for docstrings
+      }
+
+      // Enhance Python-specific syntax
+      if (token.scope) {
+        const scope = Array.isArray(token.scope) ? token.scope : [token.scope];
+
+        // Make Python function names more vibrant
+        if (scope.some(s => s.includes('entity.name.function.python'))) {
+          token.settings.foreground = '#2374e9'; // Vibrant blue for function names
+        }
+
+        // Make Python decorators more vibrant
+        if (scope.some(s => s.includes('meta.decorator.python'))) {
+          token.settings.foreground = '#a237c1'; // Vibrant purple for decorators
+        }
+
+        // Make Python keywords more vibrant
+        if (scope.some(s => s.includes('keyword.control.flow.python') ||
+          s.includes('storage.type.function.python') ||
+          s.includes('keyword.other.python'))) {
+          token.settings.foreground = '#a237c1'; // Vibrant purple for keywords
+        }
+
+        // Make string literals more vibrant
+        if (scope.some(s => s.includes('string.quoted') && !s.includes('docstring'))) {
+          token.settings.foreground = '#23974a'; // Vibrant green for strings
+        }
+
+        // Make Python builtin functions more vibrant
+        if (scope.some(s => s.includes('support.function.builtin.python'))) {
+          token.settings.foreground = '#2374e9'; // Vibrant blue for builtin functions
+        }
+
+        // Make self/cls parameters more vibrant 
+        if (scope.some(s => s.includes('variable.parameter.function.language.special.self.python') ||
+          s.includes('variable.parameter.function.language.special.cls.python'))) {
+          token.settings.foreground = '#e2b93d'; // Vibrant yellow for self/cls
+        }
+
+        // Make variable types more vibrant
+        if (scope.some(s => s.includes('support.type.python'))) {
+          token.settings.foreground = '#e2b93d'; // Vibrant yellow for types
+        }
+      }
+    });
+  } else {
+    // Use existing logic for dark themes
+    colorObj = configuration.vivid
+      ? data.textColors.vivid
+      : data.textColors.classic;
+  }
+
   for (const key in colorObj) {
     if (configuration[key]) {
       colorObj[key] = configuration[key]
